@@ -1,0 +1,1 @@
+docker run -p 8080:8080 -v c:\projects\card-api_v4\api\dist:/swagger -e SWAGGER_JSON=/swagger/swagger.json swaggerapi/swagger-ui
