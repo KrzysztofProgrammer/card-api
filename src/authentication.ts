@@ -1,7 +1,7 @@
 import * as express from 'express';
 
 export function expressAuthentication(request: express.Request, securityName: string, scopes?: string[]): Promise<any> {
-    console.log('Auth check ' + JSON.stringify(request.query));
+    console.log('Auth check ' + JSON.stringify(request.query) + ' sec name: '+ securityName);
     if (securityName === 'api_key') {
         let token;
         if (request.query && request.query.access_token) {
@@ -15,10 +15,12 @@ export function expressAuthentication(request: express.Request, securityName: st
                 name: 'Ironman'
             });
         } else {
-            return Promise.reject({ error: "Wrong password"});
+            console.log('Wrong password!');
+            return Promise.reject({}); //error: "Wrong password"
         }
     } else {
-        return Promise.reject({error: "No authorization"});
+        console.log('No authorization!');
+        return Promise.reject({}); // reject should be empty object
     }
 
 }

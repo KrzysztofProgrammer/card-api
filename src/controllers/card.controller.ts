@@ -14,6 +14,7 @@ export class CardController extends Controller {
     @Example<CardResponse>({
         message: 'Version 1.0'
     })
+    @SuccessResponse('200','PostgreSQL version response')
     @Get('/version')
     public async getVersion(): Promise<CardResponse> {
         return registerGetVersion();
