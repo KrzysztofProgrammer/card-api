@@ -1,7 +1,8 @@
-import {Controller, Post, Route, Security, Body, Example, SuccessResponse, Tags, Get} from 'tsoa';
+import {Controller, Post, Route, Security, Body, Example, SuccessResponse, Tags, Get, Response} from 'tsoa';
 import {CardEvent} from "../models/cardEvent";
 import {CardResponse} from "../models/cardResponse";
 import {registerGetVersion, registerPause, registerStart, registerStop} from "../service";
+import {ApiError} from "../models/apiError";
 
 @Security('api_key')
 @Tags('cards')
@@ -15,8 +16,10 @@ export class CardController extends Controller {
         message: 'Version 1.0'
     })
     @SuccessResponse('200','PostgreSQL version response')
+    @Response<ApiError>('401','Not authorized')
     @Get('/version')
     public async getVersion(): Promise<CardResponse> {
+        console.log('getVersion request');
         return registerGetVersion();
     }
 

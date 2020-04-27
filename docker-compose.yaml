@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   web:
-    image: aerabi/express-ts
+    image: kc/card-api-server
     build: .
     ports:
       - "3000:3000"

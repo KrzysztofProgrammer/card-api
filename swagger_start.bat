@@ -1,1 +1,4 @@
-docker run -p 8080:8080 -v c:\projects\card-api_v4\api\dist:/swagger -e SWAGGER_JSON=/swagger/swagger.json swaggerapi/swagger-ui
+@echo off
+rem On Windows need to be run from Powershell
+docker run -p 8080:8080 -e SWAGGER_JSON=/swagger/swagger.json -v %cd%\api\dist:/swagger  swaggerapi/swagger-ui
+echo "http://localhost:8080"

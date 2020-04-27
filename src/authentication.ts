@@ -1,4 +1,6 @@
 import * as express from 'express';
+import {ApiError} from "./models/apiError";
+
 
 export function expressAuthentication(request: express.Request, securityName: string, scopes?: string[]): Promise<any> {
     console.log('Auth check ' + JSON.stringify(request.query) + ' sec name: '+ securityName);
@@ -16,7 +18,8 @@ export function expressAuthentication(request: express.Request, securityName: st
             });
         } else {
             console.log('Wrong password!');
-            return Promise.reject({}); //error: "Wrong password"
+            throw new ApiError('Wrong password',401, 'Wrong password');
+            // return Promise.reject({}); //error: "Wrong password"
         }
     } else {
         console.log('No authorization!');

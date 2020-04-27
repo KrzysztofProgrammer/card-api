@@ -19,6 +19,17 @@ const models: TsoaRoute.Models = {
         "additionalProperties": true,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ApiError": {
+        "dataType": "refObject",
+        "properties": {
+            "name": { "dataType": "string", "required": true },
+            "message": { "dataType": "string", "required": true },
+            "stack": { "dataType": "string" },
+            "statusCode": { "dataType": "double", "default": 500 },
+        },
+        "additionalProperties": true,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "CardEvent": {
         "dataType": "refObject",
         "properties": {
